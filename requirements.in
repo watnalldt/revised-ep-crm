@@ -4,3 +4,4 @@ django-environ
 
 # Formatting and Linting
 black
+ruff

@@ -19,3 +19,10 @@ repos:
       rev: 23.11.0
       hooks:
           - id: black
+
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.1.7
+      hooks:
+        - id: ruff
+          alias: autoformat
+          args: [ --fix ]
