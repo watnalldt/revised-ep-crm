@@ -5,3 +5,8 @@ django-environ
 # Formatting and Linting
 black
 ruff
+
+# Testing
+pytest-django
+pytest-sugar
+coverage
