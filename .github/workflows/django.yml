@@ -28,4 +28,3 @@ jobs:
     - name: Format with Black
       run: |
         black .
-

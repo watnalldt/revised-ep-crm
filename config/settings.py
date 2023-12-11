@@ -24,8 +24,6 @@ env = environ.Env(
 env.read_env(str(BASE_DIR / ".env.development"))
 
 
-
-
 SECRET_KEY = env("SECRET_KEY")
 
 ALLOWED_HOSTS: list[str] = env("ALLOWED_HOSTS")
