@@ -1,4 +1,5 @@
 Django<5.0
+django-environ
 
 
 # Formatting and Linting

@@ -12,6 +12,8 @@ click==8.1.7
     # via black
 django==4.2.8
     # via -r requirements.in
+django-environ==0.11.2
+    # via -r requirements.in
 mypy-extensions==1.0.0
     # via black
 packaging==23.2
