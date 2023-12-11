@@ -29,5 +29,3 @@ jobs:
     - name: Lint with Ruff
       run: ruff .
 
-    - name: Format with Black
-      run: black .
