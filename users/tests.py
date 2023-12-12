@@ -68,3 +68,10 @@ def test_normalize_email():
     email = "Test@Example.com"
     normalized_email = manager.normalize_email(email)
     assert normalized_email.lower() == "test@example.com"
+
+
+@pytest.mark.django_db
+def test_create_user_no_email():
+    # Test creating a user without providing an email
+    with pytest.raises(ValueError, match="The Email must be set"):
+        User.objects.create_user("", "testpassword")

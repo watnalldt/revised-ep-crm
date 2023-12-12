@@ -1,6 +1,8 @@
 Django<5.0
 django-environ
 
+# model version control
+django-simple-history
 
 # Formatting and Linting
 ruff
