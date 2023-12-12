@@ -10,6 +10,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      DJANGO_SECRET_KEY: some-test-key-not-good-for-prod
     strategy:
       max-parallel: 4
       matrix:
@@ -30,5 +32,7 @@ jobs:
       run: ruff .
 
     - name: Run Tests
+      env:
+        DJANGO_SECRET_KEY: ${{ env.DJANGO_SECRET_KEY }}
       run: |
           coverage run -m pytest
