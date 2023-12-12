@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core.apps.CoreConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
+""" Custom User Authentication """
+AUTH_USER_MODEL = "users.User"
 
 TEMPLATES = [
     {
