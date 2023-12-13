@@ -1,8 +1,9 @@
 import pytest
 from django.test import TestCase
-from users.models import AccountManager
+
+from clients.models import Client, ClientsManager
 from core.models import TimeStampedModel
-from clients.models import ClientsManager, Client
+from users.models import AccountManager
 
 
 @pytest.mark.django_db
