@@ -1,6 +1,9 @@
 import pytest
+from django.contrib.auth import get_user_model
 
-from users.models import CustomUserManager, User
+from users.models import AccountManager, CustomUserManager
+
+User = get_user_model()
 
 
 @pytest.mark.django_db
@@ -75,3 +78,25 @@ def test_create_user_no_email():
     # Test creating a user without providing an email
     with pytest.raises(ValueError, match="The Email must be set"):
         User.objects.create_user("", "testpassword")
+
+
+@pytest.mark.django_db
+def test_returns_email_as_string():
+    account_manager = AccountManager(email="test@example.com")
+    assert str(account_manager) == "test@example.com"
+
+
+@pytest.mark.django_db
+def test_ac_manager_get_queryset():
+    # Test setting user roles
+    account_manager = AccountManager.objects.create(
+        email="test@example.com", password="testpassword", role="ACCOUNT_MANAGER"
+    )
+
+    # Create an instance of ACManager
+    account_managers = AccountManager.objects.all()
+
+    # Assert that only users with the ACCOUNT_MANAGER role are in the queryset
+    assert account_manager in account_managers
+
+    assert account_managers.count() == 1

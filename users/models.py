@@ -72,3 +72,24 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
     def __str__(self):
         return self.email
+
+
+class ACManager(models.Manager):
+    # Ensures queries on the Account Manager model return only Account Managers
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Roles.ACCOUNT_MANAGER)
+
+
+class AccountManager(User):
+    # This sets the user role to Account Manager during record creation
+    base_role = User.Roles.ACCOUNT_MANAGER
+    objects = ACManager()
+
+    class Meta:
+        proxy = True
+        verbose_name = "Account Manager"
+        verbose_name_plural = "Account Managers"
+
+    def __str__(self):
+        return self.email
