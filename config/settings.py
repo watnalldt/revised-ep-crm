@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "simple_history",
     "utilities.apps.UtilitiesConfig",
+    "clients.apps.ClientsConfig",
 ]
 
 MIDDLEWARE = [
