@@ -1,6 +1,7 @@
 import pytest
-from django.test import TestCase
 from django.db import IntegrityError
+from django.test import TestCase
+
 from clients.models import Client
 from users.models import AccountManager
 
@@ -37,7 +38,7 @@ class TestClientModel(TestCase):
     def test_manager_select_related(self):
         # Test the custom manager's select_related behavior
         account_manager = AccountManager.objects.create(email="test@example.com")
-        client = Client.objects.create(client="Test Client2", account_manager=account_manager)
+        Client.objects.create(client="Test Client2", account_manager=account_manager)
 
         # Retrieve the client using the manager's queryset
         client_from_manager = Client.objects.get(client="Test Client2")
