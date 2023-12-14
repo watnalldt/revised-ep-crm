@@ -10,7 +10,7 @@ class ClientsManager(models.Manager):
         return (
             super()
             .get_queryset()
-            .prefetch_related(
+            .select_related(
                 "account_manager",
             )
         )

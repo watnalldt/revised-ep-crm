@@ -42,7 +42,7 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
     """User model. This identifies whether the user is an
-    account manager, client manager, or admin"""
+    account manager, property manager, or admin"""
 
     class Roles(models.TextChoices):
         ACCOUNT_MANAGER = "ACCOUNT_MANAGER", _("Account Manager")

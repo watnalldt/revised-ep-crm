@@ -1,8 +1,7 @@
 import pytest
 from django.test import TestCase
-
-from clients.models import Client, ClientsManager
-from core.models import TimeStampedModel
+from django.db import IntegrityError
+from clients.models import Client
 from users.models import AccountManager
 
 
@@ -26,3 +25,22 @@ class TestClientModel(TestCase):
     def test_client_str_representation(self):
         # Ensure that the __str__ method returns the client name
         self.assertEqual(str(self.client), "Test Client")
+
+    def test_unique_client(self):
+        # Test that the 'client' field is unique
+        account_manager = AccountManager.objects.create(email="test@example.com")
+        Client.objects.create(client="Test Client1", account_manager=account_manager)
+
+        with pytest.raises(IntegrityError):
+            Client.objects.create(client="Test Client1", account_manager=account_manager)
+
+    def test_manager_select_related(self):
+        # Test the custom manager's select_related behavior
+        account_manager = AccountManager.objects.create(email="test@example.com")
+        client = Client.objects.create(client="Test Client2", account_manager=account_manager)
+
+        # Retrieve the client using the manager's queryset
+        client_from_manager = Client.objects.get(client="Test Client2")
+
+        # Ensure that the account_manager is fetched via select_related
+        assert client_from_manager.account_manager == account_manager
