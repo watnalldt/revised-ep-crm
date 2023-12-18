@@ -31,4 +31,3 @@ class ComplaintsPolicyView(HTMLTitleMixin, TemplateView):
 class PrivacyPolicyView(HTMLTitleMixin, TemplateView):
     template_name = "pages/privacy_policy.html"
     html_title = "EP Privacy Policy"
-

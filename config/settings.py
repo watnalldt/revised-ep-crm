@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "import_export",
     "pages.apps.PagesConfig",
+    "django_browser_reload",
 ]
 
 MIDDLEWARE = [

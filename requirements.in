@@ -7,6 +7,8 @@ django-simple-history
 # Management
 django-import-export
 
+# Browser Reload
+django-browser-reload
 # Formatting and Linting
 ruff
 
