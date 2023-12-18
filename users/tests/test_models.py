@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth import get_user_model
 
-from users.models import AccountManager, CustomUserManager
+from users.models import AccountManager, CustomUserManager, PropertyManager
 
 User = get_user_model()
 
@@ -87,16 +87,22 @@ def test_returns_email_as_string():
 
 
 @pytest.mark.django_db
-def test_ac_manager_get_queryset():
+def test_pm_manager_get_queryset():
     # Test setting user roles
-    account_manager = AccountManager.objects.create(
-        email="test@example.com", password="testpassword", role="ACCOUNT_MANAGER"
+    property_manager = PropertyManager.objects.create(
+        email="test@example.com", password="testpassword", role="PROPERTY_MANAGER"
     )
 
     # Create an instance of ACManager
-    account_managers = AccountManager.objects.all()
+    property_managers = PropertyManager.objects.all()
 
     # Assert that only users with the ACCOUNT_MANAGER role are in the queryset
-    assert account_manager in account_managers
+    assert property_manager in property_managers
 
-    assert account_managers.count() == 1
+    assert property_managers.count() == 1
+
+
+@pytest.mark.django_db
+def test_returns_pm_email_as_string():
+    property_manager = PropertyManager(email="test@example.com")
+    assert str(property_manager) == "test@example.com"

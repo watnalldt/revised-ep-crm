@@ -93,3 +93,24 @@ class AccountManager(User):
 
     def __str__(self):
         return self.email
+
+
+class PRManager(models.Manager):
+    # Ensures queries on the Account Manager model return only Account Managers
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Roles.PROPERTY_MANAGER)
+
+
+class PropertyManager(User):
+    # This sets the user role to Account Manager during record creation
+    base_role = User.Roles.PROPERTY_MANAGER
+    objects = PRManager()
+
+    class Meta:
+        proxy = True
+        verbose_name = "Property Manager"
+        verbose_name_plural = "Property Managers"
+
+    def __str__(self):
+        return self.email
