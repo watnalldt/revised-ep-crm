@@ -10,6 +10,10 @@ django-import-export
 # Formatting and Linting
 ruff
 
+# Rest Framework
+djangorestframework
+django-cors-headers
+
 # Testing
 pytest-django
 pytest-sugar

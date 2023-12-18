@@ -5,7 +5,9 @@
 #    pip-compile
 #
 asgiref==3.7.2
-    # via django
+    # via
+    #   django
+    #   django-cors-headers
 coverage==7.3.3
     # via -r requirements.in
 defusedxml==0.7.1
@@ -15,8 +17,12 @@ diff-match-patch==20230430
 django==4.2.8
     # via
     #   -r requirements.in
+    #   django-cors-headers
     #   django-extensions
     #   django-import-export
+    #   djangorestframework
+django-cors-headers==4.3.1
+    # via -r requirements.in
 django-environ==0.11.2
     # via -r requirements.in
 django-extensions==3.2.3
@@ -24,6 +30,8 @@ django-extensions==3.2.3
 django-import-export==3.3.4
     # via -r requirements.in
 django-simple-history==3.4.0
+    # via -r requirements.in
+djangorestframework==3.14.0
     # via -r requirements.in
 et-xmlfile==1.1.0
     # via openpyxl
@@ -49,6 +57,8 @@ pytest-django==4.7.0
     # via -r requirements.in
 pytest-sugar==0.9.7
     # via -r requirements.in
+pytz==2023.3.post1
+    # via djangorestframework
 pyyaml==6.0.1
     # via tablib
 ruff==0.1.8
