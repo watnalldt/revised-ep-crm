@@ -1,8 +1,11 @@
 Django<5.0
 django-environ
+django-extensions
 
 # model version control
 django-simple-history
+# Management
+django-import-export
 
 # Formatting and Linting
 ruff

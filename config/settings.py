@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "simple_history",
     "utilities.apps.UtilitiesConfig",
     "clients.apps.ClientsConfig",
+    "django_extensions",
+    "import_export",
 ]
 
 MIDDLEWARE = [
