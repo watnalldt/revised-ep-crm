@@ -9,8 +9,14 @@ asgiref==3.7.2
     #   django
     #   django-browser-reload
     #   django-cors-headers
+click==8.1.7
+    # via djlint
+colorama==0.4.6
+    # via djlint
 coverage==7.3.3
     # via -r requirements.in
+cssbeautifier==1.14.11
+    # via djlint
 defusedxml==0.7.1
     # via odfpy
 diff-match-patch==20230430
@@ -37,10 +43,26 @@ django-simple-history==3.4.0
     # via -r requirements.in
 djangorestframework==3.14.0
     # via -r requirements.in
+djlint==1.34.0
+    # via -r requirements.in
+editorconfig==0.12.3
+    # via
+    #   cssbeautifier
+    #   jsbeautifier
 et-xmlfile==1.1.0
     # via openpyxl
+html-tag-names==0.1.2
+    # via djlint
+html-void-elements==0.1.0
+    # via djlint
 iniconfig==2.0.0
     # via pytest
+jsbeautifier==1.14.11
+    # via
+    #   cssbeautifier
+    #   djlint
+json5==0.9.14
+    # via djlint
 markuppy==1.14
     # via tablib
 odfpy==1.4.1
@@ -51,6 +73,8 @@ packaging==23.2
     # via
     #   pytest
     #   pytest-sugar
+pathspec==0.11.2
+    # via djlint
 pluggy==1.3.0
     # via pytest
 pytest==7.4.3
@@ -64,9 +88,17 @@ pytest-sugar==0.9.7
 pytz==2023.3.post1
     # via djangorestframework
 pyyaml==6.0.1
-    # via tablib
+    # via
+    #   djlint
+    #   tablib
+regex==2023.10.3
+    # via djlint
 ruff==0.1.8
     # via -r requirements.in
+six==1.16.0
+    # via
+    #   cssbeautifier
+    #   jsbeautifier
 sqlparse==0.4.4
     # via django
 tablib[html,ods,xls,xlsx,yaml]==3.5.0
@@ -75,6 +107,8 @@ tablib[html,ods,xls,xlsx,yaml]==3.5.0
     #   tablib
 termcolor==2.4.0
     # via pytest-sugar
+tqdm==4.66.1
+    # via djlint
 xlrd==2.0.1
     # via tablib
 xlwt==1.3.0

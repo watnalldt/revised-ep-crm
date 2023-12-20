@@ -11,7 +11,7 @@ django-import-export
 django-browser-reload
 # Formatting and Linting
 ruff
-
+djlint
 # Rest Framework
 djangorestframework
 django-cors-headers

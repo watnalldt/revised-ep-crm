@@ -21,3 +21,7 @@ select = [
     "I",
 ]
 ignore = ["E501", "E741", "F401", "S101", "S106"]
+
+[tool.djlint]
+profile="django"
+ignore = "H031,H006,H030,H021"
