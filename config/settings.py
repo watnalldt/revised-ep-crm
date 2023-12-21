@@ -34,6 +34,7 @@ DEBUG = env("DEBUG")
 # Application definition
 
 INSTALLED_APPS = [
+    "grappelli",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -50,6 +51,9 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "django_browser_reload",
     "contracts.apps.ContractsConfig",
+    "admin_auto_filters",
+    "rangefilter"
+
 ]
 
 MIDDLEWARE = [

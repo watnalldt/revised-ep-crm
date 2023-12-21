@@ -140,6 +140,8 @@ class Contract(models.Model):
     )
     top_line = models.CharField(verbose_name="Top Line", max_length=40, null=True, blank=True)
     mpan_mpr = models.IntegerField(validators=[validate_no_decimal], verbose_name="MPAN/MPR")
+    second_mpan_mpr = models.IntegerField(validators=[validate_no_decimal],
+                                          verbose_name="Second MPAN/MPR", blank=True, null=True)
     meter_serial_number = models.CharField(
         max_length=100,
         null=True,

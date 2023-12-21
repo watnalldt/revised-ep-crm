@@ -6,9 +6,12 @@ django-extensions
 django-simple-history
 # Management
 django-import-export
-
+django-grappelli
+django-admin-rangefilter
+django-admin-autocomplete-filter
 # Browser Reload
 django-browser-reload
+
 # Formatting and Linting
 ruff
 djlint

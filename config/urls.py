@@ -20,6 +20,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path("admin/", admin.site.urls),
     path("", include('pages.urls')),
     path("__reload__/", include("django_browser_reload.urls")),

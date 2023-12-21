@@ -1,14 +1,13 @@
-# from admin_auto_filters.filters import AutocompleteFilter
+from admin_auto_filters.filters import AutocompleteFilter
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-
-# from rangefilter.filters import DateRangeFilter
 from django.db.models import Count
 from django.urls import reverse
 from django.utils.html import format_html
 from import_export import fields, resources
 from import_export.admin import ImportExportModelAdmin
 from import_export.widgets import ForeignKeyWidget
+from rangefilter.filters import DateRangeFilter
 
 from clients.models import Client
 from utilities.models import Supplier, Utility
@@ -25,9 +24,9 @@ class ContractResource(resources.ModelResource):
         widget=ForeignKeyWidget(Client, "client"),
     )
 
-    client_manager = fields.Field(
-        column_name="client_manager",
-        attribute="client_manager",
+    property_manager = fields.Field(
+        column_name="property_manager",
+        attribute="property_manager",
         widget=ForeignKeyWidget(User, "email"),
     )
 
@@ -60,13 +59,14 @@ class ContractResource(resources.ModelResource):
             "bid_id",
             "portal_status",
             "client",
-            "client_manager",
+            "property_manager",
             "is_directors_approval",
             "business_name",
             "company_reg_number",
             "utility",
             "top_line",
             "mpan_mpr",
+            "second_mpan_mpr",
             "meter_status",
             "meter_serial_number",
             "building_name",
@@ -117,24 +117,24 @@ class ContractResource(resources.ModelResource):
         ]
 
 
-# class ClientFilter(AutocompleteFilter):
-#     title = "Client"  # display title
-#     field_name = "client"  # name of the foreign key field
-#
-#
-# class ClientManagerFilter(AutocompleteFilter):
-#     title = "Client Manager"  # display title
-#     field_name = "client_manager"  # name of the foreign key field
-#
-
-# class SupplierFilter(AutocompleteFilter):
-#     title = "Supplier"  # display title
-#     field_name = "supplier"  # name of the foreign key field
+class ClientFilter(AutocompleteFilter):
+    title = "Client"  # display title
+    field_name = "client"  # name of the foreign key field
 
 
-# class UtilityTypeFilter(AutocompleteFilter):
-#     title = "Utility Type"  # display title
-#     field_name = "utility"  # name of the foreign key field
+class PropertyManagerFilter(AutocompleteFilter):
+    title = "Property Manager"  # display title
+    field_name = "property_manager"  # name of the foreign key field
+
+
+class SupplierFilter(AutocompleteFilter):
+    title = "Supplier"  # display title
+    field_name = "supplier"  # name of the foreign key field
+
+
+class UtilityTypeFilter(AutocompleteFilter):
+    title = "Utility Type"  # display title
+    field_name = "utility"  # name of the foreign key field
 
 
 # class AccountManagerFilter(admin.SimpleListFilter):
@@ -180,14 +180,12 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         "supplier",
         "utility",
         "mpan_mpr",
-        "meter_status",
+        "second_mpan_mpr",
         "meter_serial_number",
-
         "eac",
         "contract_start_date",
         "contract_end_date",
         "is_ooc",
-        "is_directors_approval",
     )
     list_display_links = ("business_name",)
     list_select_related = ("client", "property_manager", "supplier", "utility")
@@ -197,7 +195,7 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             {
                 "description": "Enter the site details",
                 "fields": (
-                    ("client", "client_manager", "business_name"),
+                    ("client", "property_manager", "business_name"),
                     "site_address",
                     "supplier",
                     "utility",
@@ -310,16 +308,17 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_filter = [
         "contract_type",
         "contract_status",
-        # ClientFilter,
-        # ClientManagerFilter,
-        # SupplierFilter,
-        # UtilityTypeFilter,
+        "client",
+        PropertyManagerFilter,
+        SupplierFilter,
+        UtilityTypeFilter,
         # AccountManagerFilter,
         "seamless_status",
         "is_ooc",
         "is_directors_approval",
-        # ("contract_end_date", DateRangeFilter),
-        # ("contract_start_date", DateRangeFilter),
+        "meter_status",
+        ("contract_end_date", DateRangeFilter),
+        ("contract_start_date", DateRangeFilter),
         "vat",
         "vat_declaration_sent",
     ]
@@ -336,6 +335,7 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         "utility__utility",
         "supplier__supplier",
         "mpan_mpr",
+        "second_mpan_mpr",
         "meter_serial_number",
         "site_address",
     )
