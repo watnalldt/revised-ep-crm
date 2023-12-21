@@ -20,7 +20,7 @@ select = [
     # isort
     "I",
 ]
-ignore = ["E501", "E741", "F401", "S101", "S106"]
+ignore = ["E501", "E741", "F401", "S101", "S106", "S308"]
 
 [tool.djlint]
 profile="django"
