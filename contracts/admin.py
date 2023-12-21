@@ -173,7 +173,7 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = (
         "id",
         "contract_status",
-        # "link_to_clients",
+        "link_to_clients",
         "business_name",
         "property_manager",
         "site_address",
@@ -324,7 +324,7 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ]
     autocomplete_fields = [
         "client",
-        # "client_manager",
+        "property_manager",
         "supplier",
         "future_supplier",
     ]
@@ -409,15 +409,15 @@ class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                 obj.save()
                 self.message_user(request, f"Vat declaration set to YES for {obj}.")
 
-    # def link_to_clients(self, obj):
-    #     link = reverse("admin:clients_client_change", args=[obj.client.id])
-    #     return format_html(
-    #         '<a href="{}">{}</a>',
-    #         link,
-    #         obj.client,
-    #     )
-    #
-    # link_to_clients.short_description = "Clients"
+    def link_to_clients(self, obj):
+        link = reverse("admin:clients_client_change", args=[obj.client.id])
+        return format_html(
+            '<a href="{}">{}</a>',
+            link,
+            obj.client,
+        )
+
+    link_to_clients.short_description = "Clients"
 
 
 admin.site.register(Contract, ContractAdmin)
