@@ -7,21 +7,21 @@ default_language_version:
 fail_fast: true
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.5.0
+      rev: v5.0.0
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
           - id: check-yaml
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.1.8
+      rev: v0.7.0
       hooks:
         - id: ruff
           alias: autoformat
           args: [ --fix ]
 
     - repo: https://github.com/Riverside-Healthcare/djLint
-      rev: v1.34.0
+      rev: v1.35.2
       hooks:
           - id: djlint-reformat-django
           - id: djlint-django
